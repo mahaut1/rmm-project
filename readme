@@ -1,0 +1,105 @@
+# RMM – Plateforme d’administration
+
+Projet étudiant de type **RMM (Remote Monitoring & Management)**.  
+Ce dépôt contient la partie **administrateur** de l’application : une API backend et une interface frontend permettant de gérer des clients, leurs machines (agents) et les actions exécutées à distance.
+
+L’agent installé sur les machines clientes et le service de collecte associé ne font pas partie de ce dépôt.
+
+---
+
+## Objectif
+
+L’objectif du projet est de fournir une plateforme d’administration centralisée permettant :
+- l’authentification sécurisée des administrateurs
+- la gestion des clients
+- la gestion des machines associées à un client
+- l’envoi et le suivi d’actions exécutées sur les machines
+
+---
+
+## Architecture
+
+Le projet est organisé selon une architecture séparée frontend / backend afin de garantir la maintenabilité et le travail en équipe.
+
+- **Backend** : API REST sous Node.js et Express
+- **Frontend** : Interface administrateur développée avec React
+- **Base de données** : PostgreSQL
+- **Infrastructure locale** : Docker
+
+---
+
+## Backend
+
+Le backend expose une API REST sécurisée :
+- authentification par email et mot de passe
+- mots de passe hachés stockés 
+- génération de tokens JWT pour sécuriser les routes
+- contrôle d’accès par rôles
+- gestion des entités : utilisateurs, clients, agents, actions
+
+Toutes les règles de sécurité et la logique métier sont gérées côté backend.
+
+---
+
+## Frontend
+
+Le frontend fournira une interface dédiée aux administrateurs permettant :
+- la connexion à l’application
+- la consultation des clients
+- l’accès aux machines associées
+- le déclenchement d’actions à distance
+
+Le frontend consomme exclusivement l’API et ne contient aucune logique métier sensible.
+
+---
+
+## Base de données
+
+La base de données est basée sur PostgreSQL et utilise des identifiants de type UUID.  
+Les principales tables gèrent les utilisateurs, les clients, les clés d’API, les agents, les actions et les résultats d’exécution.
+
+Le schéma SQL est fourni dans le dépôt.
+
+---
+
+## Service externe (collector)
+
+Le backend communique avec un service externe appelé **collector** pour la génération de clés API et de tokens d’installation.  
+En environnement de développement, un mécanisme de repli permet de continuer à travailler même si ce service n’est pas disponible.
+
+---
+
+## Configuration
+
+La configuration du projet repose exclusivement sur des variables d’environnement.  
+
+---
+
+## Lancement du projet
+
+Le projet peut être lancé en environnement local à l’aide de Docker pour la base de données, puis avec des scripts npm pour le backend et le frontend.
+
+Une route de santé (`/health`) permet de vérifier la disponibilité de l’API et de la base de données.
+
+---
+
+## Organisation de l’équipe
+
+Le travail est réparti entre :
+- une référente technique en charge de l’architecture, du backend et de la sécurité
+- des développeurs junior en charge du frontend, de l’ergonomie et de fonctionnalités backend simples
+
+Cette organisation permet une montée en compétence progressive tout en garantissant la cohérence du projet.
+
+---
+
+## État du projet
+
+- Architecture validée
+- Backend fonctionnel et sécurisé
+- Gestion des clients opérationnelle
+- Interface administrateur en cours de finalisation
+
+---
+
+Projet réalisé dans un cadre pédagogique.
