@@ -60,7 +60,58 @@ Les principales tables gèrent les utilisateurs, les clients, les clés d’API,
 
 Le schéma SQL est fourni dans le dépôt.
 
----
+
+## Démarrer le projet
+1) Démarrer la base PostgreSQL (Docker)
+
+Depuis la racine du repo :
+
+docker compose up -d
+docker ps
+
+2) Initialiser la base (import du schéma)
+Toujours depuis la racine du repo (PowerShell) :
+Get-Content .\backend\src\schema.sql | docker exec -i rmm-postgres psql -U <DB_USER> -d <DB_NAME>
+
+
+Remplace <DB_USER> et <DB_NAME> par les valeurs définies dans ton .env racine.
+
+
+3) Lancer le backend (API)
+
+Dans un second terminal :
+
+cd backend
+npm install
+npm run dev
+
+
+L’API démarre sur :
+
+http://localhost:4000
+
+4) Vérifier l’état de l’API et de la DB
+
+Dans le navigateur ou Postman :
+
+GET http://localhost:4000/health
+réponse attendu status: ok
+
+
+5) Créer un administrateur (seed)
+
+Toujours dans backend/ :
+
+node scripts/seedAdmin.js
+
+
+6) Lancer le frontend
+
+Dans un troisième terminal :
+
+cd frontend
+npm install
+npm run dev
 
 ## Service externe (collector)
 
@@ -78,6 +129,8 @@ La configuration du projet repose exclusivement sur des variables d’environnem
 ## Lancement du projet
 
 Le projet peut être lancé en environnement local à l’aide de Docker pour la base de données, puis avec des scripts npm pour le backend et le frontend.
+
+docker compose up -d pour lancer le conteneur
 
 Une route de santé (`/health`) permet de vérifier la disponibilité de l’API et de la base de données.
 
