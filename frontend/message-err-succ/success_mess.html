@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Connexion réussie</title>
+    <link rel="stylesheet" href="../message-err-succ/css/style_mess.css" />
+  </head>
+  <body>
+    <div class="card success">
+      <h1>Connexion réussie ✅</h1>
+      <p>Bienvenue sur votre espace personnel.</p>
+      <button onclick="window.location.href = 'index.html'">
+        Retour à l'accueil
+      </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        const duration = 3000;
+        const end = Date.now() + duration;
+
+        (function frame() {
+          confetti({
+            particleCount: 6,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        })();
+      });
+    </script>
+  </body>
+</html>
