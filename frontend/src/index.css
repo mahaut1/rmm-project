@@ -66,3 +66,51 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Page de connexion */
+
+body{
+  background-image: url('/frontend/src/assets/img/imageconnexion.jpg');
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.titre_connexion{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+h1{
+  font-size: 40px;
+  font-family: 'Lucida Console', monospace;
+}
+
+h2{
+  font-size: 50px;
+  font-family: 'Times New Roman', sans-serif;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="email"], input[type="password"]{
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px;
+  background-color: #ffffff;
+  background-size: cover;
+  border-color: #ffffff;
+  color: #1a1a1a;
+}
