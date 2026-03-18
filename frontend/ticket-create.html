@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="static/ticket-create.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>simony <i class="fa-solid fa-layer-group"></i></h2>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+        <a href="#" class="nav-item active"><i class="fa-solid fa-ticket"></i> Tickets</a>
+        <a href="#" class="nav-item"><i class="fa-regular fa-user"></i> Clients</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-share-nodes"></i> Appareils</a>
+        <a href="#" class="nav-item"><i class="fa-regular fa-envelope"></i> Messages</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="search-container">
+          <div class="search-block">
+            <button>Nouveau \/</button>
+            <div class="search-bar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="search" placeholder="Rechercher...">
+            </div>
+          </div>
+          <div class="profil-block">
+            <button>Installer un agent</button>
+            <div class="profil-container">
+              <button>cloche</button>
+              <button>profil</button>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-create-block">
+          <h1>New ticket</h1>
+          <div class="cancel-create">
+            <button>cancel</button>
+            <button>create</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-container">
+
+        <form class="left-part">
+          <section class="card">
+
+            <h2>Customer</h2>
+            <div class="field">
+              <input type="text" placeholder="Select customer">
+            </div>
+
+            <h2>Contact</h2>
+            <div class="field">
+              <input type="text" placeholder="Search contacts">
+            </div>
+            <div class="field">
+              <button class="add-contact-btn" type="button">
+                Add contact
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" />
+                  <line x1="8" y1="4.5" x2="8" y2="11.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                  <line x1="4.5" y1="8" x2="11.5" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            <h2>Ticket Title</h2>
+            <div class="field">
+              <input type="text" placeholder="Add summary...">
+            </div>
+
+            <h2>Description</h2>
+            <div class="field">
+              <textarea placeholder="Enter ticket detail here..."></textarea>
+            </div>
+
+            <div class="date-container">
+              <div class="calendar"></div>
+              <div class="date-info">
+                <div class="field">
+                  <label>Start date*</label>
+                  <input type="date">
+                </div>
+                <div class="field">
+                  <label>End date*</label>
+                  <input type="date">
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </form>
+
+        <div class="right-part">
+
+          <section class="card">
+            <h2>Ticket assignement and type</h2>
+
+            <div class="field">
+              <label>Customer</label>
+              <select>
+                <option>Select customer</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Assign technician</label>
+              <select>
+                <option>Choose technician</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Type</label>
+              <select>
+                <option>Incident</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Contract</label>
+              <select>
+                <option>Select contract</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Ticket priorities</h2>
+
+            <div class="field">
+              <label>Form template</label>
+              <select>
+                <option>Please select</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Priority</label>
+              <select>
+                <option>Select priority</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Impact</label>
+              <select>
+                <option>Incident</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Product family</label>
+              <select>
+                <option>Please select</option>
+              </select>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
