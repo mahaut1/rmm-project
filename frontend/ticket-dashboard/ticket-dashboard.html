@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tickets Dashboard - Simony</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href=".//ticket-dashboard.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>simony <i class="fa-solid fa-layer-group"></i></h2>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item"
+            ><i class="fa-solid fa-chart-pie"></i> Dashboard</a
+          >
+          <a href="#" class="nav-item active"
+            ><i class="fa-solid fa-ticket"></i> Tickets</a
+          >
+          <a href="#" class="nav-item"
+            ><i class="fa-regular fa-user"></i> Clients</a
+          >
+          <a href="#" class="nav-item"
+            ><i class="fa-solid fa-share-nodes"></i> Appareils</a
+          >
+          <a href="#" class="nav-item"
+            ><i class="fa-regular fa-envelope"></i> Messages</a
+          >
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="btn-nouveau">
+              Nouveau <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Rechercher" />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="btn-install">Installer un agent</button>
+            <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+            <div class="user-avatar">
+              <i class="fa-regular fa-user"></i>
+            </div>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <div class="page-header">
+            <h1>Tickets</h1>
+            <button class="btn-primary">New Ticket</button>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active">Tickets</div>
+            <div class="tab">Scheduled Tickets</div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <input type="checkbox" class="custom-checkbox" />
+              <button class="toolbar-btn">
+                <i class="fa-regular fa-trash-can"></i> Delete
+              </button>
+              <button class="toolbar-btn">
+                <i class="fa-regular fa-user"></i> Assign ticket
+              </button>
+              <span class="display-count">Displaying 20 of 2002</span>
+            </div>
+            <div class="toolbar-right">
+              <div class="view-select">
+                Default view <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <button class="toolbar-btn">
+                <i class="fa-solid fa-bars-staggered"></i> Filters
+              </button>
+            </div>
+          </div>
+
+          <div class="ticket-list">
+            <div class="list-row header-row">
+              <div class="col-check"></div>
+              <div class="col-logo"></div>
+              <div class="col-details">Details</div>
+              <div class="col-sla">SLA</div>
+              <div class="col-sentiment">Sentiment</div>
+              <div class="col-assignee">Assigned technician</div>
+              <div class="col-priority">Priority</div>
+              <div class="col-activity">Activity status</div>
+              <div class="col-status">Status</div>
+            </div>
+
+            <div class="list-row">
+              <div class="col-check">
+                <input type="checkbox" class="custom-checkbox" />
+              </div>
+              <div class="col-logo">
+                <div class="company-logo blue-circle">
+                  <i class="fa-solid fa-hurricane"></i>
+                </div>
+              </div>
+              <div class="col-details">
+                <div class="ticket-title">
+                  <span class="ticket-id">#325</span> Salty tech
+                </div>
+                <div class="ticket-meta">
+                  <span class="location">Sophia Antipolis</span>
+                  <span class="author">Thierry Salomon</span>
+                </div>
+                <div class="ticket-time">
+                  Created 11 months ago
+                  <span class="badge-time">Modified 11 minutes ago</span>
+                </div>
+              </div>
+              <div class="col-sla"><span class="badge-sla">NOSLAN</span></div>
+              <div class="col-sentiment">
+                <span class="emoji neutral">😐</span>
+              </div>
+              <div class="col-assignee">
+                <div class="assignee">
+                  <span class="avatar-text">AO</span>
+                  <div class="assignee-info">
+                    <span class="name"
+                      >Alex Oxxlan <i class="fa-solid fa-chevron-down"></i
+                    ></span>
+                    <span class="status-badge online">Online</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-priority">
+                Low <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-activity">
+                <span class="dot read"></span> Read
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-status">
+                <span class="badge-status open"
+                  >Open <i class="fa-solid fa-chevron-down"></i
+                ></span>
+              </div>
+            </div>
+
+            <div class="list-row">
+              <div class="col-check">
+                <input type="checkbox" class="custom-checkbox" />
+              </div>
+              <div class="col-logo">
+                <div class="company-logo dell">
+                  <i class="fa-solid fa-laptop"></i>
+                </div>
+              </div>
+              <div class="col-details">
+                <div class="ticket-title">
+                  <span class="ticket-id">#325</span> Martin TEK
+                </div>
+                <div class="ticket-meta">
+                  <span class="location">Sophia Antipolis</span>
+                  <span class="author">Thierry Salomon</span>
+                </div>
+                <div class="ticket-time">
+                  Created 11 months ago
+                  <span class="badge-time">Modified 11 minutes ago</span>
+                </div>
+              </div>
+              <div class="col-sla"><span class="badge-sla">NOSLAN</span></div>
+              <div class="col-sentiment">
+                <span class="emoji happy">🙂</span>
+              </div>
+              <div class="col-assignee">
+                <div class="assignee">
+                  <span class="avatar-text">AO</span>
+                  <div class="assignee-info">
+                    <span class="name"
+                      >Alex Oxxlan <i class="fa-solid fa-chevron-down"></i
+                    ></span>
+                    <span class="status-badge online">Online</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-priority">
+                Low <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-activity">
+                <span class="dot read"></span> Read
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-status">
+                <span class="badge-status open"
+                  >Open <i class="fa-solid fa-chevron-down"></i
+                ></span>
+              </div>
+            </div>
+
+            <div class="list-row">
+              <div class="col-check">
+                <input type="checkbox" class="custom-checkbox" />
+              </div>
+              <div class="col-logo">
+                <div class="company-logo blue-circle">
+                  <i class="fa-solid fa-hurricane"></i>
+                </div>
+              </div>
+              <div class="col-details">
+                <div class="ticket-title">
+                  <span class="ticket-id">#325</span> Salty tech
+                </div>
+                <div class="ticket-meta">
+                  <span class="location">Sophia Antipolis</span>
+                  <span class="author">Thierry Salomon</span>
+                </div>
+                <div class="ticket-time">
+                  Created 11 months ago
+                  <span class="badge-time">Modified 11 minutes ago</span>
+                </div>
+              </div>
+              <div class="col-sla"><span class="badge-sla">NOSLAN</span></div>
+              <div class="col-sentiment"><span class="emoji sad">🙁</span></div>
+              <div class="col-assignee">
+                <div class="assignee">
+                  <span class="avatar-text">BM</span>
+                  <div class="assignee-info">
+                    <span class="name"
+                      >Benjo Mir <i class="fa-solid fa-chevron-down"></i
+                    ></span>
+                    <span class="status-badge offline">Offline</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-priority">
+                Low <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-activity">
+                <span class="dot read"></span> Read
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="col-status">
+                <span class="badge-status open"
+                  >Open <i class="fa-solid fa-chevron-down"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
