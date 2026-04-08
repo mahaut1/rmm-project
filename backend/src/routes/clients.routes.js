@@ -1,12 +1,11 @@
 import { Router } from "express";
+import { listClients, createClient } from "../controllers/clients.controller.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
-import { getClients, createClient } from "../controllers/clients.controller.js";
+import { requireRole } from "../middleware/requireRole.js";
 
 const router = Router();
 
-router.use(authMiddleware);
-
-router.get("/", getClients);
-router.post("/", createClient);
+router.get("/", authMiddleware, requireRole("admin"), listClients);
+router.post("/", authMiddleware, requireRole("admin"), createClient);
 
 export default router;

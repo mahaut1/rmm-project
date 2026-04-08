@@ -9,6 +9,7 @@ export async function findActionsByAgentId(agentId) {
      ORDER BY a.created_at DESC`,
     [agentId]
   );
+
   return res.rows;
 }
 
@@ -19,5 +20,6 @@ export async function createAction(agentId, type, payload) {
      RETURNING *`,
     [agentId, type, payload]
   );
+
   return res.rows[0];
 }

@@ -16,21 +16,25 @@ app.use(express.json());
 
 app.get("/health", async (req, res) => {
   try {
-    const result = await query(
-      "SELECT current_user, current_database(), inet_server_addr(), inet_server_port()"
-    );
-    res.json({ status: "ok", info: result.rows[0] });
+    const result = await query("SELECT NOW() AS now, current_database() AS db");
+
+    res.json({
+      status: "ok",
+      postgres: result.rows[0]
+    });
   } catch (err) {
-    console.error("HEALTH DB ERROR:", err);
-    res.status(500).json({ status: "error", message: err.message, code: err.code });
+    console.error("Health check error:", err);
+    res.status(500).json({ status: "error", message: "Database connection failed" });
   }
 });
 
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/clients", clientsRoutes);
 app.use("/api/tokens", tokensRoutes);
 app.use("/api/agents", agentsRoutes);
 app.use("/api/actions", actionsRoutes);
+
+// on sécurisera internal autrement
 app.use("/internal", internalRoutes);
 
 export default app;

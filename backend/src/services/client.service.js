@@ -25,7 +25,6 @@ export async function getAllClients() {
  * puis stocke l'api_key en base.
  */
 export async function insertClientWithApiKey({ name, user_id = null }) {
-  // 1) créer client en DB
   const clientRes = await query(
     `INSERT INTO clients (name, user_id)
      VALUES ($1, $2)
@@ -35,15 +34,13 @@ export async function insertClientWithApiKey({ name, user_id = null }) {
 
   const client = clientRes.rows[0];
 
-  // 2) appeler le collector (ton service attend un "name")
   const collectorData = await createCollectorClient(name);
-  const api_key = collectorData.api_key;
+  const api_key = collectorData?.api_key;
 
   if (!api_key) {
     throw new Error("Collector did not return api_key");
   }
 
-  // 3) stocker api_key en DB
   await query(
     `INSERT INTO api_keys (api_key, client_id)
      VALUES ($1, $2)`,

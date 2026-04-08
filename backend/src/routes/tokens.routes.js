@@ -1,20 +1,19 @@
-// backend/src/routes/tokens.routes.js
 import { Router } from "express";
-import { authMiddleware } from "../middleware/authMiddleware.js";
 import {
-  getTokensByClient,
-  createTokenForClient,
+  // tes controllers ici
 } from "../controllers/tokens.controller.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import { requireRole } from "../middleware/requireRole.js";
 
 const router = Router();
 
-// toutes les routes de ce fichier sont protégées par JWT
-router.use(authMiddleware);
+// exemples
+router.get("/", authMiddleware, requireRole("admin"), (req, res) => {
+  res.json({ message: "tokens secured" });
+});
 
-// GET /api/tokens/client/:clientId
-router.get("/client/:clientId", getTokensByClient);
-
-// POST /api/tokens/client/:clientId
-router.post("/client/:clientId", createTokenForClient);
+router.post("/", authMiddleware, requireRole("admin"), (req, res) => {
+  res.json({ message: "create token secured" });
+});
 
 export default router;

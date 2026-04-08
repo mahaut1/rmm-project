@@ -1,18 +1,14 @@
-import { query } from "../config/db.js";
 import bcrypt from "bcryptjs";
+import { query } from "../config/db.js";
 
 export async function findUserByEmail(email) {
   const res = await query(
-    `SELECT
-       user_id,
-       email,
-       password_hash,
-       role,
-       created_at
+    `SELECT user_id, email, password_hash, role, created_at
      FROM users
      WHERE email = $1`,
     [email]
   );
+
   return res.rows[0];
 }
 

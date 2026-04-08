@@ -1,29 +1,23 @@
 import "dotenv/config";
 import postgres from "postgres";
 
-const host = process.env.DB_HOST;
-const port = Number(process.env.DB_PORT || 5432);
-const database = process.env.DB_NAME;
-const user = process.env.DB_USER;
-const password = process.env.DB_PASSWORD;
-
-if (!host || !database || !user || !password) {
-  throw new Error("Missing DB_* env vars. Check backend/.env");
-}
-
-// Local docker => pas de SSL
 const sql = postgres({
-  host,
-  port,
-  database,
-  user,
-  password,
-  ssl: false,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT || 5432),
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  ssl: process.env.DB_SSL === "true" ? "require" : undefined
 });
 
 export async function query(text, params = []) {
-  const rows = await sql.unsafe(text, params);
-  return { rows };
+  try {
+    const rows = await sql.unsafe(text, params);
+    return { rows };
+  } catch (err) {
+    console.error("DB ERROR:", err);
+    throw err;
+  }
 }
 
 export default sql;

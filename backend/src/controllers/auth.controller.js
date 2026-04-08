@@ -11,18 +11,20 @@ export async function login(req, res) {
 
   try {
     const user = await findUserByEmail(email);
+
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const ok = await bcrypt.compare(password, user.password_hash);
+
     if (!ok) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const token = generateToken({
       user_id: user.user_id,
-      role: user.role,
+      role: user.role
     });
 
     res.json({ token });
@@ -41,6 +43,7 @@ export async function register(req, res) {
 
   try {
     const existing = await findUserByEmail(email);
+
     if (existing) {
       return res.status(409).json({ message: "User already exists" });
     }
@@ -49,7 +52,7 @@ export async function register(req, res) {
 
     const token = generateToken({
       user_id: user.user_id,
-      role: user.role,
+      role: user.role
     });
 
     res.status(201).json({ user, token });
