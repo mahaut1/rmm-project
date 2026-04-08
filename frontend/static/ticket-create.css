@@ -1,0 +1,394 @@
+:root {
+    --bg-sidebar: #2b3544;
+    --text-sidebar: #a0abc0;
+    --text-sidebar-active: #ffffff;
+    --bg-main: #ffffff;
+    --primary-color: #7c5dfa;
+    --text-main: #1a1a1a;
+    --text-muted: #8a94a6;
+    --border-color: #e2e8f0;
+    --bg-hover: #f8f9fa;
+
+    --status-online: #2ecc71;
+    --status-offline: #ff7675;
+    --bg-open: #ebe4ff;
+    --text-open: #7c5dfa;
+    --bg-noslan: #e2e8f0;
+    --text-noslan: #a0abc0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* ================== SIDEBAR ================== */
+
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+.logo {
+    padding: 0 24px 32px 24px;
+    color: white;
+}
+
+.logo h2 {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-sidebar);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-item:hover {
+    color: var(--text-sidebar-active);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: var(--text-sidebar-active);
+    border-left: 3px solid white;
+}
+
+/* ================== MAIN CONTENT ================== */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* ================== TOP BAR ================== */
+
+.top-bar {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.search-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+
+.search-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-block button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: var(--text-muted);
+}
+
+.search-bar svg {
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    padding: 0;
+    color: var(--text-main);
+    width: 180px;
+}
+
+.profil-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profil-block > button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.profil-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profil-container button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 7px 10px;
+    border-radius: 50%;
+    font-size: 13px;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-create-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 0 24px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.cancel-create {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cancel-create button:first-child {
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.cancel-create button:first-child:hover {
+    background: var(--bg-hover);
+}
+
+.cancel-create button:last-child {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.cancel-create button:last-child:hover {
+    opacity: 0.9;
+}
+
+/* ================== TICKET CONTAINER ================== */
+
+.ticket-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+/* ================== CARDS ================== */
+
+.card {
+    background: #f7f7fb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5ef;
+}
+
+.card > h2:first-child {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.card h2 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* ================== ADD CONTACT BUTTON ================== */
+
+.add-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    align-self: flex-start;
+    gap: 6px;
+    padding: 6px 12px 6px 10px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.add-contact-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+}
+
+.add-contact-btn:active {
+    background: #f3f4f6;
+    box-shadow: none;
+}
+
+.add-contact-btn svg {
+    display: block;
+    color: #6b7280;
+    flex-shrink: 0;
+}
+
+/* ================== FIELDS ================== */
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.field label {
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+/* ================== INPUTS ================== */
+
+input,
+select,
+textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d8d8e2;
+    background: white;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ================== DATE SECTION ================== */
+
+.date-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.calendar {
+    width: 220px;
+    height: 220px;
+    background: white;
+    border: 1px solid #d8d8e2;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ================== RIGHT PART ================== */
+
+.right-part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-part .card {
+    margin-bottom: 0;
+}
