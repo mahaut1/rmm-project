@@ -2,6 +2,8 @@ import { apiFetch } from "./api.js";
 
 const clientsContainer = document.querySelector("#clients-container");
 
+let alerts = [];
+
 function checkAuthentication() {
   const token = localStorage.getItem("token");
 
@@ -29,6 +31,20 @@ function formatDate(date) {
   });
 }
 
+async function loadAlerts() {
+  try {
+    const data = await apiFetch("/api/alerts");
+    alerts = Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Impossible de charger les alertes :", error);
+    alerts = [];
+  }
+}
+
+function getLatestAlertForClient(clientId) {
+  return alerts.find((alert) => alert.client_id === clientId);
+}
+
 function getClientName(client) {
   return escapeHtml(client.name || "Client sans nom");
 }
@@ -39,11 +55,12 @@ function getClientCreatedDate(client) {
 
 function getClientShortId(client) {
   if (!client.client_id) return "ID inconnu";
-
   return escapeHtml(client.client_id.slice(0, 8));
 }
 
 function createExpandedClientCard(client) {
+  const latestAlert = getLatestAlertForClient(client.client_id);
+
   return `
     <div class="card expanded">
       <div class="card-top-row">
@@ -81,11 +98,20 @@ function createExpandedClientCard(client) {
         </div>
 
         <div class="alerts-panel">
-          <div class="alerts-title">Dernières alertes</div>
+          <div class="alerts-title">Dernière alerte</div>
 
           <div class="alert-row">
-            <span class="alert-text">Aucune alerte pour ce client</span>
-            <span class="alert-date">-</span>
+            <span class="alert-text">
+              ${
+                latestAlert
+                  ? escapeHtml(latestAlert.title)
+                  : "Aucune alerte pour ce client"
+              }
+            </span>
+
+            <span class="alert-date">
+              ${latestAlert ? formatDate(latestAlert.created_at) : "-"}
+            </span>
           </div>
         </div>
       </div>
@@ -94,6 +120,8 @@ function createExpandedClientCard(client) {
 }
 
 function createSimpleClientCard(client, index) {
+  const latestAlert = getLatestAlertForClient(client.client_id);
+
   const imageStyle =
     index % 2 === 0
       ? 'style="background:linear-gradient(135deg, #92400e, #78350f)"'
@@ -108,7 +136,11 @@ function createSimpleClientCard(client, index) {
           </span>
 
           <span style="font-size:13px;color:var(--text-secondary)">
-            Créé le ${getClientCreatedDate(client)}
+            ${
+              latestAlert
+                ? `Dernière alerte : ${escapeHtml(latestAlert.title)}`
+                : `Créé le ${getClientCreatedDate(client)}`
+            }
           </span>
         </div>
 
@@ -149,6 +181,8 @@ function enableToggles() {
 async function loadClients() {
   try {
     clientsContainer.innerHTML = `<p class="loading-message">Chargement des clients...</p>`;
+
+    await loadAlerts();
 
     const clients = await apiFetch("/api/clients");
 

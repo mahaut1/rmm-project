@@ -8,6 +8,7 @@ import agentsRoutes from "./routes/agents.routes.js";
 import actionsRoutes from "./routes/actions.routes.js";
 import internalRoutes from "./routes/internal.routes.js";
 import ticketsRoutes from "./routes/tickets.routes.js";
+import alertsRoutes from "./routes/alerts.routes.js";
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use("/api/tokens", tokensRoutes);
 app.use("/api/agents", agentsRoutes);
 app.use("/api/actions", actionsRoutes);
 app.use("/api/tickets", ticketsRoutes);
+app.use("/api/alerts", alertsRoutes);
 // on sécurisera internal autrement
 app.use("/internal", internalRoutes);
 
