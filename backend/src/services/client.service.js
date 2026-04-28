@@ -2,13 +2,16 @@ import { query } from "../config/db.js";
 import { createCollectorClient } from "./collector.service.js";
 
 /**
- * Liste tous les clients avec leur api_key (si existe)
+ * Liste tous les clients avec leur api_key si elle existe.
  */
 export async function getAllClients() {
   const res = await query(
     `SELECT
        c.client_id,
        c.name,
+       c.address,
+       c.phone,
+       c.contact,
        c.created_at,
        c.user_id,
        ak.api_key
@@ -24,12 +27,18 @@ export async function getAllClients() {
  * Crée un client, appelle le collector pour récupérer une api_key,
  * puis stocke l'api_key en base.
  */
-export async function insertClientWithApiKey({ name, user_id = null }) {
+export async function insertClientWithApiKey({
+  name,
+  address = null,
+  phone = null,
+  contact = null,
+  user_id = null,
+}) {
   const clientRes = await query(
-    `INSERT INTO clients (name, user_id)
-     VALUES ($1, $2)
-     RETURNING client_id, name, created_at, user_id`,
-    [name, user_id]
+    `INSERT INTO clients (name, address, phone, contact, user_id)
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING client_id, name, address, phone, contact, created_at, user_id`,
+    [name, address, phone, contact, user_id]
   );
 
   const client = clientRes.rows[0];

@@ -1,28 +1,55 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connexion</title>
-    <link href="/frontend/src/index.css" rel="stylesheet">
-</head>
-<body>
-   <div class="titre_connexion">
-    <h1>Simony</h1>
-    <h2>Bienvenue</h2>
-   </div>
-    <form>
-      <div>
-        <input type="email" name="email" id="email-input" placeholder="E-mail">
-      </div> 
-      <div>
-       <input type="password" name="password" id="password-input" placeholder="Mot de passe">
+    <title>Connexion - Simony</title>
+
+    <link rel="stylesheet" href="./src/index.css" />
+  </head>
+
+  <body>
+    <main class="connexion-page">
+      <div class="titre_connexion">
+        <h1>Simony</h1>
+        <h2>Bienvenue</h2>
       </div>
+
+      <form id="login-form" novalidate>
+        <div>
+          <label for="email-input">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email-input"
+            placeholder="E-mail"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password-input">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="password-input"
+            placeholder="Mot de passe"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <p id="error-message" role="alert" aria-live="polite"></p>
+
+        <button type="submit" id="login-button">Sign In</button>
       </form>
-    <div class="buttons">
-      <button>Sign In</button>
-      <button>Reset password</button>
-   </div>
-</body>
+
+      <div class="buttons">
+        <button type="button">Reset password</button>
+      </div>
+    </main>
+
+    <script type="module" src="./static/auth.js"></script>
+  </body>
 </html>

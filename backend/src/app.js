@@ -1,13 +1,13 @@
 import express from "express";
 import cors from "cors";
 import { query } from "./config/db.js";
-
 import authRoutes from "./routes/auth.routes.js";
 import clientsRoutes from "./routes/clients.routes.js";
 import tokensRoutes from "./routes/tokens.routes.js";
 import agentsRoutes from "./routes/agents.routes.js";
 import actionsRoutes from "./routes/actions.routes.js";
 import internalRoutes from "./routes/internal.routes.js";
+import ticketsRoutes from "./routes/tickets.routes.js";
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use("/api/clients", clientsRoutes);
 app.use("/api/tokens", tokensRoutes);
 app.use("/api/agents", agentsRoutes);
 app.use("/api/actions", actionsRoutes);
-
+app.use("/api/tickets", ticketsRoutes);
 // on sécurisera internal autrement
 app.use("/internal", internalRoutes);
 

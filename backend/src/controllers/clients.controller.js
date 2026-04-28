@@ -15,13 +15,20 @@ export async function listClients(req, res) {
 
 export async function createClient(req, res) {
   try {
-    const { name, user_id } = req.body;
+    const { name, address, phone, contact, user_id } = req.body;
 
     if (!name) {
       return res.status(400).json({ error: "name is required" });
     }
 
-    const result = await insertClientWithApiKey({ name, user_id });
+    const result = await insertClientWithApiKey({
+      name,
+      address,
+      phone,
+      contact,
+      user_id,
+    });
+
     res.status(201).json(result);
   } catch (err) {
     console.error("createClient error:", err);

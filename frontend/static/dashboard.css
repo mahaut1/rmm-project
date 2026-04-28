@@ -362,4 +362,23 @@
       display: inline-flex;
   }
 
+  .clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.loading-message,
+.empty-message,
+.error-message {
+  margin: 0;
+  padding: 16px;
+  color: var(--text-secondary);
+  font-family: var(--font);
+}
+
+.error-message {
+  color: #ef4444;
+}
   
